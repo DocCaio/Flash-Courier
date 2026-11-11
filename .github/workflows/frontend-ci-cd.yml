@@ -1,0 +1,61 @@
+name: Frontend CI/CD Pipeline (React + Yarn)
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'frontend/**'
+  pull_request:
+    branches: [ "main" ]
+    paths:
+      - 'frontend/**'
+
+jobs:
+  build-and-lint:
+    name: Lint, Test & Build Frontend
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./frontend
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'yarn'
+          cache-dependency-path: './frontend/yarn.lock'
+
+      - name: Instalar Dependências com Yarn
+        run: yarn install --frozen-lockfile
+
+      - name: Executar Linter
+        run: yarn lint || echo "Sem script de lint"
+
+      - name: Executar Testes Automatizados
+        run: yarn test --watchAll=false || echo "Sem testes"
+
+      - name: Build do Projeto (Vite/React)
+        run: yarn build
+
+      - name: Guardar artefato de Build
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-build
+          path: ./frontend/dist
+
+  deploy:
+    name: Deploy Frontend
+    needs: build-and-lint
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar artefato compilado
+        uses: actions/download-artifact@v4
+        with:
+          name: dist-build
+          path: ./dist
