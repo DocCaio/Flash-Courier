@@ -2,11 +2,15 @@ import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/NavBar';
 import Footer from './components/Footer';
 import Home from './pages/Home'; 
+import ConsultarCep from './pages/ConsultarCep'; 
 
+function Endereco() { 
+  return <div className="p-6">Página de Endereço</div>; 
+}
 
-function Endereco() { return <div className="p-6">Página de Endereço</div>; }
-function ConsultarCep() { return <div className="p-6">Consulta de CEP</div>; }
-function Sobre() { return <div className="p-6">Página Sobre</div>; }
+function Sobre() { 
+  return <div className="p-6">Página Sobre</div>; 
+}
 
 export default function App() {
   return (
