@@ -3,23 +3,14 @@ name: Frontend CI/CD Pipeline (React + Yarn)
 on:
   push:
     branches: [ "main" ]
-    paths:
-      - 'Flash-Courier/**'
-      - '.github/workflows/**'
   pull_request:
     branches: [ "main" ]
-    paths:
-      - 'Flash-Courier/**'
-      - '.github/workflows/**'
   workflow_dispatch:
 
 jobs:
   build-and-lint:
     name: Lint, Test & Build Frontend
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./Flash-Courier
 
     steps:
       - name: Checkout do código
@@ -30,7 +21,7 @@ jobs:
         with:
           node-version: 20
           cache: 'yarn'
-          cache-dependency-path: './Flash-Courier/yarn.lock'
+          cache-dependency-path: 'yarn.lock'
 
       - name: Instalar Dependências com Yarn
         run: yarn install --frozen-lockfile
@@ -48,7 +39,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: dist-build
-          path: ./Flash-Courier/dist
+          path: ./dist
 
   deploy:
     name: Deploy Frontend
