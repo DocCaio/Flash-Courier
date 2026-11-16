@@ -2,7 +2,8 @@ import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/NavBar';
 import Footer from './components/Footer';
 import Home from './pages/Home'; 
-import ConsultarCep from './pages/ConsultarCep'; 
+import ConsultarCep from './pages/ConsultarCep';
+
 
 function Endereco() { 
   return <div className="p-6">Página de Endereço</div>; 
