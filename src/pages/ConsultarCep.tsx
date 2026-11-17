@@ -1,7 +1,7 @@
 import { useState, type ChangeEvent, type FormEvent } from 'react';
-import axios from 'axios';
 import { Search, MapPin, Loader2, AlertCircle, CheckCircle2 } from 'lucide-react';
 import type { EnderecoViaCep } from '../types/cep';
+import { consultarCepApi } from '../services/cepService';
 
 export default function ConsultarCep() {
   const [cep, setCep] = useState<string>('');
@@ -34,17 +34,12 @@ export default function ConsultarCep() {
     setEndereco(null);
 
     try {
-      const response = await axios.get<EnderecoViaCep>(
-        `https://viacep.com.br/ws/${cepLimpo}/json/`
+      const data = await consultarCepApi(cepLimpo);
+      setEndereco(data);
+    } catch (err: any) {
+      setErro(
+        err.message || 'Ocorreu um erro ao buscar o CEP. Verifique sua conexão.'
       );
-
-      if (response.data.erro) {
-        setErro('CEP não encontrado na base de dados.');
-      } else {
-        setEndereco(response.data);
-      }
-    } catch (err) {
-      setErro('Ocorreu um erro ao buscar o CEP. Verifique sua conexão.');
     } finally {
       setLoading(false);
     }
