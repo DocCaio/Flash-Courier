@@ -59,11 +59,11 @@ export default function Sobre() {
             <div className="w-10 h-10 bg-purple-500/10 rounded-xl flex items-center justify-center text-purple-400">
               <Server className="w-6 h-6" />
             </div>
-            <h2 className="text-xl font-bold text-white">Backend: Kotlin + Spring Boot</h2>
+            <h2 className="text-xl font-bold text-white">Backend: Go + Gin</h2>
           </div>
 
           <p className="text-gray-400 text-sm leading-relaxed">
-            API RESTful desenvolvida em Kotlin seguindo Clean Architecture, garantindo baixo acoplamento, tipagem segura e alta performance nas consultas de CEP e cálculos logísticos.
+            API RESTful desenvolvida em Go seguindo Clean Architecture, garantindo baixo acoplamento, tipagem segura e alta performance nas consultas de CEP e cálculos logísticos.
           </p>
 
           <ul className="space-y-2 text-sm text-gray-300 pt-2">
