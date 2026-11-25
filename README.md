@@ -1,75 +1,112 @@
-# React + TypeScript + Vite
+# FreteExpress - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<div align="center">
 
-Currently, two official plugins are available:
+![React](https://img.shields.io/badge/React_19-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS_v4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![Yarn](https://img.shields.io/badge/Yarn-2C8EBB?style=for-the-badge&logo=yarn&logoColor=white)
+![Vitest](https://img.shields.io/badge/Vitest-729B1B?style=for-the-badge&logo=vitest&logoColor=white)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Interface web moderna e responsiva desenvolvida para consulta rápida de endereços por CEP e simulação precisa de fretes, integrada a um backend em Go (Gin).
 
-## React Compiler
+</div>
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🚀 Tecnologias Utilizadas
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+* **React 19** & **TypeScript** (Tipagem estática e componentes modernos)
+* **Tailwind CSS v4** (Estilização utilitária e design responsivo)
+* **React Router DOM** (Gerenciamento de rotas e navegação SPA)
+* **Axios** (Cliente HTTP para comunicação com a API)
+* **Lucide React** (Biblioteca de ícones moderna e limpa)
+* **Vitest & Testing Library** (Ambiente de testes unitários)
+* **Yarn** (Gerenciador de pacotes)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 📂 Estrutura de Pastas
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```text
+src/
+├── components/       # Componentes globais reutilizáveis (Navbar, Footer, etc.)
+├── pages/            # Páginas principais da aplicação (Home, ConsultarCep, CalcularFrete, Sobre)
+├── services/         # Camada de comunicação com a API (Axios)
+├── types/            # Interfaces e tipagens TypeScript compartilhadas
+├── App.tsx           # Configuração de rotas e layout principal
+└── main.tsx          # Ponto de entrada da aplicação
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## ⚙️ Pré-requisitos
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Certifique-se de ter instalado em sua máquina:
+* [Node.js](https://nodejs.org/) (Versão 18+ recomendada)
+* [Yarn](https://yarnpkg.com/)
 
+---
+
+## 📥 Instalação e Execução Local
+
+1. Clone o repositório e acesse a pasta do frontend:
+   ```bash
+   git clone https://github.com/SEU-USUARIO/freteexpress-frontend.git
+   cd freteexpress-frontend
+   ```
+
+2. Instale as dependências utilizando o **Yarn**:
+   ```bash
+   yarn install
+   ```
+
+3. Crie um arquivo `.env` na raiz baseando-se no ambiente desejado (opcional, por padrão aponta para o localhost):
+   ```env
+   VITE_API_URL=http://localhost:8080/api
+   ```
+
+4. Inicie o servidor de desenvolvimento:
+   ```bash
+   yarn dev
+   ```
+
+A aplicação estará disponível em `http://localhost:5173`.
+
+---
+
+## 🧪 Rodando os Testes
+
+Para executar a suíte de testes unitários com **Vitest**:
+
+```bash
+# Executar testes uma única vez
+yarn test run
+
+# Executar testes em modo watch (observação de alterações)
+yarn test
 ```
+
+---
+
+## 🐳 Docker
+
+Para executar a aplicação containerizada:
+
+1. Construir a imagem:
+   ```bash
+   docker build -t freteexpress-frontend .
+   ```
+
+2. Executar o container:
+   ```bash
+   docker run -p 80:80 freteexpress-frontend
+   ```
+*(Ou utilize o `docker-compose.yml` na raiz do projeto principal para subir frontend e backend simultaneamente).*
+
+---
+
+## 📄 Licença
+
+Este projeto está sob a licença [MIT](LICENSE).
