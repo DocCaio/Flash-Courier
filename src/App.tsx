@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import ConsultarCep from './pages/ConsultarCep';
 import Sobre from './pages/Sobre';
+import CalcularFrete from './pages/CalcularFrete';
 
 function Endereco() {
   return <div className="p-6">Página de Endereço</div>;
@@ -21,6 +22,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/endereco" element={<Endereco />} />
+          <Route path="/endereco" element={<CalcularFrete />} />
           <Route path="/cep" element={<ConsultarCep />} />
           <Route path="/sobre" element={<Sobre />} />
         </Routes>
