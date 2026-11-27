@@ -78,15 +78,48 @@ A aplicação estará disponível em `http://localhost:5173`.
 
 ## 🧪 Rodando os Testes
 
-Para executar a suíte de testes unitários com **Vitest**:
+Para executar a suíte de testes unitários com **Vitest**, utilize os comandos abaixo conforme a sua necessidade:
+
+### Comandos Principais (`yarn`)
 
 ```bash
-# Executar testes uma única vez
+# Executar todos os testes uma única vez e encerrar
 yarn test run
 
-# Executar testes em modo watch (observação de alterações)
+# Executar testes em modo watch (observação automática de alterações)
 yarn test
 ```
+
+### Comandos Avançados (`yarn vitest`)
+
+Se preferir usar o comando direto do Vitest para cenários específicos:
+
+* **Executar todos os testes uma vez:**
+  ```bash
+  yarn vitest run
+  ```
+
+* **Modo watch (reexecuta automaticamente ao salvar um arquivo):**
+  ```bash
+  yarn vitest
+  ```
+
+* **Rodar apenas um arquivo específico:**
+  ```bash
+  yarn vitest run src/pages/ConsultarCep.test.tsx
+  ```
+
+* **Filtrar testes pelo nome (executa apenas os que contêm o texto):**
+  ```bash
+  yarn vitest run -t "máscara de CEP"
+  ```
+
+* **Gerar relatório de cobertura de código:**
+  *(Requer a instalação prévia do pacote `@vitest/coverage-v8`)*
+  ```bash
+  yarn vitest run --coverage
+  ```
+
 
 ---
 
