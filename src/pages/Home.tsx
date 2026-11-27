@@ -83,7 +83,7 @@ export default function Home() {
           </div>
           <h3 className="text-xl font-bold text-white">Arquitetura Robusta</h3>
           <p className="text-gray-400 text-sm leading-relaxed">
-            Conectado a uma API em Kotlin de alta performance para respostas confiáveis e em tempo real.
+            Conectado a uma API em Go de alta performance para respostas confiáveis e em tempo real.
           </p>
           <Link
             to="/sobre"
