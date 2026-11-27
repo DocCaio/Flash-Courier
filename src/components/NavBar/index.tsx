@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Menu, X, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -11,9 +10,7 @@ export default function Navbar() {
   return (
     <nav className="bg-slate-900 text-white shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
         <div className="flex items-center justify-between h-16">
-
           <Link
             to="/"
             onClick={closeMenu}
@@ -23,9 +20,7 @@ export default function Navbar() {
             <span>FreteExpress</span>
           </Link>
 
-          
           <div className="hidden md:flex items-center space-x-8">
-
             <Link
               to="/endereco"
               className="text-gray-300 hover:text-white transition-colors font-medium"
@@ -48,12 +43,11 @@ export default function Navbar() {
             </Link>
 
             <Link
-              to="/cep"
+              to="/endereco"
               className="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors"
             >
               Calcular Frete
             </Link>
-
           </div>
 
           <div className="md:hidden flex items-center">
@@ -63,20 +57,14 @@ export default function Navbar() {
               aria-label="Abrir Menu"
               aria-expanded={isOpen}
             >
-              {isOpen
-                ? <X className="w-6 h-6" />
-                : <Menu className="w-6 h-6" />
-              }
+              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
-
         </div>
       </div>
 
-
       {isOpen && (
         <div className="md:hidden bg-slate-800 px-4 pt-2 pb-4 space-y-3">
-
           <Link
             to="/endereco"
             onClick={closeMenu}
@@ -102,13 +90,12 @@ export default function Navbar() {
           </Link>
 
           <Link
-            to="/cep"
+            to="/endereco"
             onClick={closeMenu}
             className="block text-center bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-lg text-sm font-semibold transition-colors"
           >
             Calcular Frete
           </Link>
-
         </div>
       )}
     </nav>
